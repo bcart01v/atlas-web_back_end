@@ -3,14 +3,14 @@ export default function createInt8TypedArray(length, position, value) {
     throw new Error('Position outside range');
   }
 
-let buffer = new ArrayBuffer(length);
-let int8View = new DataView(buffer);
+  let buffer = new ArrayBuffer(length);
+  let int8View = new DataView(buffer);
 
-try {
-  int8View.setInt8(position, value);
-  } catch (error) {
-    throw new Error('Position outside range');
-  }
+  try {
+    int8View.setInt8(position, value);
+    } catch (error) {
+      throw new Error('Position outside range');
+    }
 
-return int8View;
+  return int8View;
 }
