@@ -1,15 +1,13 @@
 export default class Building {
   constructor(sqft) {
-    if (new.target === Building) {
-      throw new Error('Building cannot be called directly.');
-    }
+    this._sqft = sqft;
+
     if (this.evacuationWarningMessage === undefined) {
-      throw new Error('Class extending Building must ovverride evacuationWarnningMessage');
+      throw new Error("Class extending Building must override evacuationWarningMessage");
     }
-  this._sqft_sqft
   }
 
   get sqft() {
-    return this._sqft
+    return this._sqft;
   }
 }
