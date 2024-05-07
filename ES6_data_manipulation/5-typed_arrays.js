@@ -12,5 +12,5 @@ try {
     throw new Error('Position outside range');
 }
 
-return buffer;
+return int8View;
 }
