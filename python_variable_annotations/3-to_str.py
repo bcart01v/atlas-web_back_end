@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-import math
 """
 This module takes a float and returns a string representation
 Of the float.
