@@ -4,6 +4,8 @@
 This module contains the function add that adds two floats,
 and returns their sum.
 """
+
+
 def add(a: float, b: float) -> float:
     """
     This function takes two float arguments and returns their sum.
