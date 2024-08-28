@@ -1,21 +1,22 @@
 #!/usr/bin/env python3
-from typing import List, Tuple
+from typing import List, Tuple, Iterable, Sequence
 """
 This module takes a mixded list of floats and ints and
 returns the sum of the floats.
 """
 
 
-def element_length(lst: List[str]) -> List[Tuple[str, int]]:
+def element_length(lst: Iterable[Sequence]) -> List[Tuple[Sequence, int]]:
     """
-    Takes a list of strings and returns a list of tuples,
-    where each tuple contains a string and its length.
+    Takes an iterable of sequences and returns a list of tuples,
+    where each tuple contains a sequence and its length.
 
     Args:
-        lst (List[str]): A list of strings.
+        lst (Iterable[Sequence]): An iterable of sequences (e.g., strings,
+        lists, tuples).
 
     Returns:
-        List[Tuple[str, int]]: A list of tuples, each containing
-        a string and its length.
+        List[Tuple[Sequence, int]]: A list of tuples, each containing a
+        sequence and its length.
     """
     return [(i, len(i)) for i in lst]
