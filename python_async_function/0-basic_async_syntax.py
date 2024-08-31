@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""
+Module for basic async syntax, takes in an integer argument and returns a float.
+"""
 import asyncio
 import random
 
