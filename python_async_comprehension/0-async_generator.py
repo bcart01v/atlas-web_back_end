@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-
+Module containing a function that genrates random numbers asynchronously.
 """
 import asyncio
 import random
