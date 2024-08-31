@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-from typing import Union, Tuple
 """
 This module takes a mixded list of floats and ints and
 returns the sum of the floats.
 """
+from typing import Union, Tuple
 
 
 def to_kv(k: str, v: Union[int, float]) -> Tuple[str, float]:
