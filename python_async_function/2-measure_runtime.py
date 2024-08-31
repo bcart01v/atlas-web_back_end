@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""
+Module that contains a function that measures runtime.
+"""
 import time
 import asyncio
 import importlib
