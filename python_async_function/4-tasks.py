@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+"""
+Module that calls the wait_random coroutine n times
+with the specified max_delay.
+"""
 import asyncio
 from typing import List
 
