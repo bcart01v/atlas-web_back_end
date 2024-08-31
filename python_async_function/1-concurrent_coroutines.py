@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""
+Module that executes multiple coroutines at the same time with async.
+"""
 import importlib
 import asyncio
 from typing import List
