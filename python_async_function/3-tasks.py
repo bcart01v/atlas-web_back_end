@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Module that contains a function that takes an integer and returns a 
+Module that contains a function that takes an integer and returns a
 Task object.
 """
 import asyncio
