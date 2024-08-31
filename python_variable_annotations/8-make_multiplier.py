@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-from typing import Callable
 """
 This module takes a mixded list of floats and ints and
 returns the sum of the floats.
 """
+from typing import Callable
 
 
 def make_multiplier(multiplier: float) -> Callable[[float], float]:
