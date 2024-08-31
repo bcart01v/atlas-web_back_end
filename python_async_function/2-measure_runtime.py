@@ -4,7 +4,7 @@ import asyncio
 import importlib
 
 
-module_name = "0-main"
+module_name = "1-concurrent_coroutines"
 module = importlib.import_module(module_name)
 
 wait_n = getattr(module, "wait_n")
