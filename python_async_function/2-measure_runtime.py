@@ -2,14 +2,12 @@
 import time
 import asyncio
 import importlib
-
-
 module_name = "1-concurrent_coroutines"
 module = importlib.import_module(module_name)
+wait_n = __import__('1-concurrent_coroutines').wait_n
 
-wait_n = getattr(module, "wait_n")
 
-async def measure_time(n: int, max_delay: int) -> float:
+def measure_time(n: int, max_delay: int) -> float:
     """
     Measures the total execution time for wait_n(n, max_delay)
     and returns the average time per call.
@@ -22,8 +20,9 @@ async def measure_time(n: int, max_delay: int) -> float:
         float: The average time per call.
     """
 
-    start_time = time.perf_counter()
-    await wait_n(n, max_delay)
-    total_time = time.perf_counter() - start_time
+    start_time = time.time()
+    asyncio.run(wait_n(n, max_delay))
+    stop_time = time.time()
+    total_time = start_time - stop_time
 
-    return total_time / n
+    return total_time
