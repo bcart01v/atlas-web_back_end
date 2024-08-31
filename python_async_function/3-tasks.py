@@ -1,12 +1,9 @@
 #!/usr/bin/env python3
 import asyncio
 import importlib
+from typing import list
 
-
-module_name = "0-basic_async_syntax"
-module = importlib.import_module(module_name)
-
-wait_random = getattr(module, "wait_random")
+wait_random = __import__('0-basic_async_syntax').wait_random
 
 def task_wait_random(max_delay: int) -> asyncio.Task:
     """
@@ -18,5 +15,5 @@ def task_wait_random(max_delay: int) -> asyncio.Task:
     Returns:
         asyncio.Task: A Task object for the wait_random coroutine.
     """
-    task = asyncio.create_task(wait_random(max_delay))
-    return task
+
+    return asyncio.create_task(wait_random(max_delay))
