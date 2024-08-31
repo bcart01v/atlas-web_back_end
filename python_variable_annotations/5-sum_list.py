@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
+"""
+Module takes a list of floats and returns the sum of the floats.
+"""
 from typing import List
-"""
-This module takes a list of floats and returns the sum of the floats.
-"""
 
 
 def sum_list(input_list: List[float]) -> float:
