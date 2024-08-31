@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import importlib
 import asyncio
+from typing import List
 
 module_name = "0-basic_async_syntax"
 module = importlib.import_module(module_name)
@@ -8,7 +9,7 @@ module = importlib.import_module(module_name)
 wait_random = getattr(module, "wait_random")
 
 
-async def wait_n(n: int, max_delay: int) -> list:
+async def wait_n(n: int, max_delay: int) -> List[float]:
     """
     Spawns wait_random n times with the specified max_delay.
 
@@ -17,7 +18,7 @@ async def wait_n(n: int, max_delay: int) -> list:
         max_delay (int): The maximum delay value.
 
     Returns:
-        list[float]: A list of delays in ascending order.
+        List[float]: A list of delays in ascending order.
     """
 
     tasks = [await wait_random(max_delay) for _ in range(n)]
