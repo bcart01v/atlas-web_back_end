@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """Module for learning about basic cache
 """
-
 from base_caching import BaseCaching
+
 
 class BasicCache(BaseCaching):
     """
@@ -12,10 +12,12 @@ class BasicCache(BaseCaching):
     def put(self, key, item):
         """ Add Item to Cache
         """
-        if key or item:
-            self.cache_data[key] = item
-        else:
+        if key is None:
             return None
+        if item is None:
+            return None
+        else:
+            self.cache_data[key] = item
 
     def get(self, key):
         """ Get Item from Cache
