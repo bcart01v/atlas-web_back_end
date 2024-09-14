@@ -2,7 +2,29 @@
 """Filtering data from log messages"""
 import re
 import logging
+import os
+import mysql.connector
+from mysql.connector import connection
 from typing import List
+
+
+def get_db() -> connection.MySQLConnection:
+    """Establishes a connection to the MySQL database using credentials from environment variables"""
+
+    db_username = os.getenv('PERSONAL_DATA_DB_USERNAME', 'root')
+    db_password = os.getenv('PERSONAL_DATA_DB_PASSWORD', '')
+    db_host = os.getenv('PERSONAL_DATA_DB_HOST', 'localhost')
+    db_name = os.getenv('PERSONAL_DATA_DB_NAME')
+
+
+    conn = mysql.connector.connect(
+        user=db_username,
+        password=db_password,
+        host=db_host,
+        database=db_name
+    )
+
+    return conn
 
 
 PII_FIELDS = ("name", "email", "phone", "ssn", "password")
