@@ -72,3 +72,28 @@ def get_logger() -> logging.Logger:
 
     logger.addHandler(stream_handler)
     return logger
+
+def main():
+    """Main function to retrieve and log user data."""
+    logger = get_logger()
+    db_connection = get_db()
+    cursor = db_connection.cursor()
+
+    cursor.execute("SELECT name, email, phone, ssn,"
+                   "password, ip, last_login, user_agent FROM users")
+
+    rows = cursor.fetchall()
+
+    columns = ["name", "email", "phone", "ssn", "password",
+               "ip", "last_login", "user_agent"]
+
+    for row in rows:
+        user_data = "; ".join([f"{col}={val}" for col, val in zip(columns, row)]) + ";"
+        logger.info(user_data)
+
+    cursor.close()
+    db_connection.close()
+
+
+if __name__ == "__main__":
+    main()
