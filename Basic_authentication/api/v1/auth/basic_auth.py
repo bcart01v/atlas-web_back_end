@@ -65,6 +65,8 @@ class BasicAuth(Auth):
             return None
         if user_pwd is None or not isinstance(user_pwd, str):
             return None
+        if not hasattr(User, 'search'):
+            return None
 
         user_list = User.search({'email': user_email})
         if not user_list or len(user_list) == 0:
