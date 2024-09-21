@@ -7,6 +7,7 @@ from models.user import User
 from api.v1.views import app_views
 from os import getenv
 
+
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
 def login():
     """ POST /api/v1/auth_session/login
@@ -40,7 +41,9 @@ def login():
 
     return response
 
-@app_views.route('/auth_session/logout', methods=['DELETE'], strict_slashes=False)
+
+@app_views.route(
+        '/auth_session/logout', methods=['DELETE'], strict_slashes=False)
 def logout():
     """ DELETE /api/v1/auth_session/logout
     Handle user logout by destroying the session
