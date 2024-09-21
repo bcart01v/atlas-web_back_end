@@ -41,7 +41,9 @@ class Server:
         indexed_dataset = self.indexed_dataset()
 
         # Ensure index is within bounds
-        assert isinstance(index, int) and 0 <= index < len(self.__dataset), "Invalid Index"
+        assert isinstance(index,
+                          int) and 0 <= index < len(self.__dataset), "Invalid"
+        "Index"
 
         indexed_keys = list(indexed_dataset.keys())
         data = []
@@ -56,7 +58,8 @@ class Server:
             current_index += 1
 
         # Set the next index
-        next_index = current_index if current_index < len(indexed_keys) else None
+        next_index = current_index if current_index < len(
+            indexed_keys) else None
 
         return {
             "index": index,
