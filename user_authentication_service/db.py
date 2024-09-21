@@ -38,4 +38,6 @@ class DB:
 
         self._session.commit()
 
+        self._session.refresh(new_user)
+
         return new_user
