@@ -7,6 +7,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.exc import NoResultFound
 from sqlalchemy.exc import InvalidRequestError
 from sqlalchemy.orm.session import Session
+import bcrypt
 
 from user import Base, User
 
@@ -64,3 +65,9 @@ class DB:
             setattr(user, key, value)
 
         self._session.commit()
+
+    def _hash_password(self, password: str) -> bytes:
+        """ Hashes a password """
+        salt = bcrypt.gensalt()
+        hashed = bcrypt.hashpw(password.encode('utf-8'), salt)
+        return hashed
