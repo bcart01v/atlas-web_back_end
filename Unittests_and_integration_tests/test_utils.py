@@ -14,6 +14,7 @@ class TestAccessNestedMap(unittest.TestCase):
         ({"a": {"b": 2}}, ("a", "b"), 2)
     ])
     def test_access_nested_map(self, nested_map, path, expected):
+        """ Documentation here too"""
         self.assertEqual(access_nested_map(nested_map, path), expected)
 
     @parameterized.expand([
@@ -21,6 +22,7 @@ class TestAccessNestedMap(unittest.TestCase):
         ({"a": 1}, ("a", "b")),
     ])
     def test_access_nested_map_exception(self, nested_map, path):
+        """ Documentation here too"""
         with self.assertRaises(KeyError) as context:
             access_nested_map(nested_map, path)
         self.assertEqual(str(context.exception), f"'{path[-1]}'")
@@ -33,7 +35,7 @@ class TestGetJson(unittest.TestCase):
         ("http://holberton.io", {"payload": False}),
     ])
     def test_get_json(self, test_url: str, test_payload: dict):
-
+        """ This is also documentation"""
         with patch('requests.get') as mock_request:
             mock_request.return_value.json.return_value = test_payload
             self.assertEqual(get_json(test_url), test_payload)
@@ -42,8 +44,11 @@ class TestGetJson(unittest.TestCase):
 class TestMemoize(unittest.TestCase):
     """ I'm checking where it thinks documentation should be"""
     def test_memoize(self):
+        """ Testing Documentation"""
         class TestClass:
+            """ Testing Class"""
             def a_method(self):
+                """ Testing Method"""
                 return 42
 
             @memoize
