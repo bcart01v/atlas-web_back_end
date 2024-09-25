@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ Unit Testing for GithubOrgClient """
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, PropertyMock
 from parameterized import parameterized
 from client import GithubOrgClient
 
@@ -19,7 +19,30 @@ class TestGithubOrgClient(unittest.TestCase):
         test_class = GithubOrgClient(org_name)
         test_class.org()
 
-        mock_get_json.assert_called_once_with(f"https://api.github.com/orgs/{org_name}")
+        mock_get_json.assert_called_once_with(
+            f"https://api.github.com/orgs/{org_name}")
+
+    @patch('client.get_json')
+    def test_public_repos(self, mock_get_json):
+        payload = [
+            {"name": "repo1"},
+            {"name": "repo2"},
+            {"name": "repo3"}
+        ]
+        mock_get_json.return_value = payload
+
+        with patch.object(GithubOrgClient, '_public_repos_url',
+                          new_callable=PropertyMock) as mock_public_repos_url:
+            mock_public_repos_url.return_value = "http://fakeurl.com"
+
+            client = GithubOrgClient("test_org")
+            result = client.public_repos()
+
+            expected_repos = ["repo1", "repo2", "repo3"]
+            self.assertEqual(result, expected_repos)
+
+            mock_public_repos_url.assert_called_once()
+            mock_get_json.assert_called_once_with("http://fakeurl.com")
 
 
 if __name__ == '__main__':
