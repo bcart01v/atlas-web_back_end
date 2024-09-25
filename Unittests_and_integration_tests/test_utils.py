@@ -7,7 +7,7 @@ from parameterized import parameterized
 
 
 class TestAccessNestedMap(unittest.TestCase):
-
+    """ This is documentation for a class. """
     @parameterized.expand([
         ({"a": 1}, ("a",), 1),
         ({"a": {"b": 2}}, ("a",), {"b": 2}),
@@ -27,12 +27,12 @@ class TestAccessNestedMap(unittest.TestCase):
 
 
 class TestGetJson(unittest.TestCase):
-
+    """ This is also documentation for a class"""
     @parameterized.expand([
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False}),
     ])
-    def test_get_json(self, test_url:str, test_payload:dict):
+    def test_get_json(self, test_url: str, test_payload: dict):
 
         with patch('requests.get') as mock_request:
             mock_request.return_value.json.return_value = test_payload
@@ -40,17 +40,18 @@ class TestGetJson(unittest.TestCase):
 
 
 class TestMemoize(unittest.TestCase):
-
+    """ I'm checking where it thinks documentation should be"""
     def test_memoize(self):
         class TestClass:
             def a_method(self):
                 return 42
-            
+
             @memoize
             def a_property(self):
                 return self.a_method()
-            
-        with patch.object(TestClass, 'a_method', return_value=42) as mock_method:
+
+        with patch.object(TestClass, 'a_method',
+                          return_value=42) as mock_method:
             test_instance = TestClass()
 
             result_first_call = test_instance.a_property
@@ -60,6 +61,7 @@ class TestMemoize(unittest.TestCase):
             self.assertEqual(result_second_call, 42)
 
             mock_method.assert_called_once()
+
 
 if __name__ == '__main__':
     unittest.main()
