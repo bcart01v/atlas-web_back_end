@@ -2,7 +2,7 @@
 """ Unit Testing"""
 import unittest
 from unittest.mock import patch, Mock
-from utils import access_nested_map, get_json
+from utils import access_nested_map, get_json, memoize
 from parameterized import parameterized
 
 
@@ -38,6 +38,28 @@ class TestGetJson(unittest.TestCase):
             mock_request.return_value.json.return_value = test_payload
             self.assertEqual(get_json(test_url), test_payload)
 
+
+class TestMemoize(unittest.TestCase):
+
+    def test_memoize(self):
+        class TestClass:
+            def a_method(self):
+                return 42
+            
+            @memoize
+            def a_property(self):
+                return self.a_method()
+            
+        with patch.object(TestClass, 'a_method', return_value=42) as mock_method:
+            test_instance = TestClass()
+
+            result_first_call = test_instance.a_property
+            result_second_call = test_instance.a_property
+
+            self.assertEqual(result_first_call, 42)
+            self.assertEqual(result_second_call, 42)
+
+            mock_method.assert_called_once()
 
 if __name__ == '__main__':
     unittest.main()
