@@ -14,7 +14,7 @@ class TestGithubOrgClient(unittest.TestCase):
         ("abc"),
     ])
     @patch('client.get_json')
-    def test_org(self, org_name: str, mock_get_json: unittest.mock.patch):
+    def test_org(self, org_name: str, mock_get_json):
         """Test that GithubOrgClient.org returns the correct organization."""
         test_class = GithubOrgClient(org_name)
         test_class.org()
@@ -46,14 +46,14 @@ class TestGithubOrgClient(unittest.TestCase):
             mock_get_json.assert_called_once_with("http://fakeurl.com")
 
     @parameterized.expand([
-        ({'license': {'key': 'my_license'}}, 'my_license', True),
-        ({'license': {'key': 'other_license'}}, 'other_license', False),
-        ({}, 'NO LICENSE', False),
+        ({"license": {"key": "my_license"}}, "my_license", True),
+        ({"license": {"key": "other_license"}}, "my_license", False),
+        ({}, "my_license", False),
     ])
-
     def test_has_license(self, repo, license_key, expected):
-        """ Test if it has license"""
-        result = GithubOrgClient.has_license(repo, license_key)
+        """Test that GithubOrgClient.has_license returns the correct value."""
+        client = GithubOrgClient("test_org")
+        result = client.has_license(repo, license_key)
         self.assertEqual(result, expected)
 
 
