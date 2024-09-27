@@ -48,13 +48,13 @@ class Cache:
             return fn(data)
         return data
 
-    def get_str(self, key: str) -> Optional[str]:
+    def get_str(self, key: str) -> Union[str, None]:
         """
         Retrieve data as a UTF-8 string.
         """
         return self.get(key, fn=lambda d: d.decode('utf-8'))
 
-    def get_int(self, key: str) -> Optional[int]:
+    def get_int(self, key: str) -> Union[int, None]:
         """
         Retrieve data as an integer.
         """
