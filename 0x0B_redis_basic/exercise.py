@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python 3
 import redis
 import uuid
 from typing import Union
