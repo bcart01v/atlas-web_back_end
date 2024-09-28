@@ -5,6 +5,21 @@ from typing import Union, Callable, Optional
 from functools import wraps
 
 
+def call_history(method: Callable) -> Callable:
+    """ number of history inputs"""
+    inputs = method.__qualname__ + ":inputs"
+    outputs = method.__qualname__ + ":outputs"
+
+    @wraps(method)
+    def wrapper(self, *args, **kwds):
+        """wrapper of decorator"""
+        self._redis.rpush(inputs, str(args))
+        returned_method = method(self, *args, **kwds)
+        self._redis.rpush(outputs, str(returned_method))
+        return returned_method
+    return wrapper
+
+
 def count_calls(method: Callable) -> Callable:
     """
     Decorator that counts the number of times a method is called.
@@ -12,7 +27,7 @@ def count_calls(method: Callable) -> Callable:
     """
     @wraps(method)
     def wrapper(self, *args, **kwargs):
-        key = method.__qualname__ + ":calls"
+        key = f"{method.__qualname__}:calls"
         self._redis.incr(key)
         return method(self, *args, **kwargs)
     return wrapper
