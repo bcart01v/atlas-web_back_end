@@ -1,11 +1,12 @@
 -- Trigger that decreases quauntity of items when an order is placed, essentially.
-DROP TRIGGER IF EXISTS decrease_quantity;
 
-CREATE TRIGGER decrease_quantity
-BEFORE INSERT ON orders
+delimiter $$ 
+CREATE TRIGGER itemorder BEFORE INSERT ON orders
 FOR EACH ROW
 BEGIN
     UPDATE items
     SET quantity = quantity - NEW.number
-    WHERE LOWER(name) = LOWER(NEW.item_name);
+    WHERE name = NEW.item_name;
 END;
+$$
+delimiter ;
