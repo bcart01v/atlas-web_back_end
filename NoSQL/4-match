@@ -1,0 +1,2 @@
+//  MongoDB List all docs named Holberton School in School
+db.school.find({name:"Holberton school"})
