@@ -1,0 +1,2 @@
+// MongoDB Displays the number of documents in the School
+db.school.count()
