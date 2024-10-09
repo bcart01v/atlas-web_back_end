@@ -1,0 +1,2 @@
+// MongoDB Deletes all doctument containing Holberton School as name
+db.school.deleteMany({name: "Holberton school"})
