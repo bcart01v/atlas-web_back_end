@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" pymongo
+""" Returning list of schools having a specific topic.
 """
 
 from pymongo import MongoClient
