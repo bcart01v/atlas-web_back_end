@@ -1,0 +1,5 @@
+// MongoDB Adds a new attribute to any document named Holberton School
+db.school.updateMany(
+    {name: "Holberton school"},
+    {$set: {address: "972 Mission street"}}
+)
