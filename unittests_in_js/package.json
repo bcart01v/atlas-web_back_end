@@ -3,7 +3,8 @@
     "test": "mocha"
   },
   "devDependencies": {
-    "chai": "^5.1.1"
+    "chai": "^5.1.1",
+    "sinon": "^19.0.2"
   },
-    "type": "module"
+  "type": "module"
 }
