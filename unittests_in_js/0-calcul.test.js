@@ -29,4 +29,8 @@ describe('calculateNumber', function() {
     it('should return 2058802468183808 when adding 1029401234091904 and 1029401234091904', function() {
         assert.strictEqual(calculateNumber(1029401234091904, 1029401234091904), 2058802468183808);
     });
+
+    it('should return 5 when adding 3.7 and 1', function() {
+        assert.strictEqual(calculateNumber(3.7, 1), 5);
+    });
 });
