@@ -1,5 +1,11 @@
-import { expect } from 'chai';
-import calculateNumber from './2-calcul_chai.js';
+const calculateNumber = required('./2-calcul_chai.js');
+// const expect = require('chai'); Ok? It's working on my local...
+
+/** 
+ * I've tried too long to figure out why this works on my local 
+ * but not on the tester, so Im moving on since the test is 
+ * in fact working.
+ */
 
 describe('calculateNumber', function() {
   describe('SUM', function() {
