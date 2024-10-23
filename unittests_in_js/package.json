@@ -1,18 +1,21 @@
 {
-  "name": "unittests_in_js",
+  "name": "8-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
-    "lint": "./node_modules/.bin/eslint",
-    "check-lint": "lint [0-9]*.js"
+    "test": "./node_modules/mocha/bin/mocha"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.7.7",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
     "chai": "^4.2.0",
-    "sinon": "^19.0.2"
+    "mocha": "^6.2.3",
+    "request": "^2.88.0",
+    "sinon": "^7.5.0"
   }
 }

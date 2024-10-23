@@ -1,20 +1,18 @@
 const request = require('request');
-const { expect } = require('chai');
+const assert = require('assert');
 
-describe('Index page', function () {
-  const url = 'http://localhost:7865/';
-
-  it('should return status code 200', function (done) {
-    request(url, function (error, response, body) {
-      expect(response.statusCode).to.equal(200);
-      done();
+describe('Index Page', () => {
+    it('should return status code 200', (done) => {
+        request('http://localhost:7865', (error, response, body) => {
+            assert.strictEqual(response.statusCode, 200);
+            done();
+        });
     });
-  });
 
-  it('should return the correct message', function (done) {
-    request(url, function (error, response, body) {
-      expect(body).to.equal('Welcome to the payment system');
-      done();
+    it('should return the correct message', (done) => {
+        request('http://localhost:7865', (error, response, body) => {
+            assert.strictEqual(body, 'Welcome to the payment system');
+            done();
+        });
     });
-  });
 });
