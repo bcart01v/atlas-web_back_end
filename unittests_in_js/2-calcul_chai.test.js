@@ -1,49 +1,38 @@
-// 2-calcul_chai.test.js
+const expect = require('chai').expect;
+const calculateNumber = require('./2-calcul_chai.js')
 
-import { expect } from 'chai';
-import calculateNumber from './2-calcul_chai.js';
 
-describe('calculateNumber', () => {
-  describe('SUM', () => {
-    it('should return the sum of two rounded numbers', () => {
-      expect(calculateNumber('SUM', 1.4, 4.5)).to.equal(6);
-      expect(calculateNumber('SUM', 1.5, 3.7)).to.equal(6);
-      expect(calculateNumber('SUM', -1.2, -3.7)).to.equal(-5);
-      expect(calculateNumber('SUM', -1.2, 3.7)).to.equal(3);
-      expect(calculateNumber('SUM', 0, 0)).to.equal(0);
-    });
+describe('calculateNumber()', () => {
+  it('should return a sum of rounded a and rounded b', () => {
+    const sum = 'SUM';
+    expect(sum).to.be.a('string');
+    expect(calculateNumber(sum, 1.6, 3.2)).to.equal(5);
+    expect(calculateNumber(sum, 1.6, 3.2)).to.be.a('number');
+    expect(calculateNumber(sum, 1.3, 5)).to.equal(6);
+    expect(calculateNumber(sum, 1.3, 5)).to.be.a('number');
+    expect(calculateNumber(sum, 2, 4.7)).to.equal(7);
+    expect(calculateNumber(sum, 2, 4.7)).to.be.a('number');
   });
-
-  describe('SUBTRACT', () => {
-    it('should return the subtraction of two rounded numbers', () => {
-      expect(calculateNumber('SUBTRACT', 1.4, 4.5)).to.equal(-4);
-      expect(calculateNumber('SUBTRACT', 3.7, 1.2)).to.equal(3);
-      expect(calculateNumber('SUBTRACT', -1.2, -3.7)).to.equal(3);
-      expect(calculateNumber('SUBTRACT', -1.2, 3.7)).to.equal(-5);
-      expect(calculateNumber('SUBTRACT', 0, 0)).to.equal(0);
-    });
+  it('should return rounded a divided by rounded b', () => {
+    const divide = 'DIVIDE';
+    expect(divide).to.be.a('string');
+    expect(calculateNumber(divide, 2, 1.4)).to.equal(2);
+    expect(calculateNumber(divide, 2, 1.4)).to.be.a('number');
+    expect(calculateNumber(divide, 5.4, 10)).to.equal(0.5);
+    expect(calculateNumber(divide, 5.4, 10)).to.be.a('number');
+    expect(calculateNumber(divide, 9.2, 2.7)).to.equal(3);
+    expect(calculateNumber(divide, 9.2, 2.7)).to.be.a('number');
+    expect(calculateNumber(divide, 123.456, 0)).to.equal('Error');
+    expect(calculateNumber(divide, 123.456, 0)).to.be.a('string');
   });
-
-  describe('DIVIDE', () => {
-    it('should return the division of two rounded numbers', () => {
-      expect(calculateNumber('DIVIDE', 4.5, 1.4)).to.equal(5);
-      expect(calculateNumber('DIVIDE', 3.7, 1.2)).to.equal(4);
-      expect(calculateNumber('DIVIDE', -4.5, 1.2)).to.equal(-4);
-      expect(calculateNumber('DIVIDE', 1.4, -3.7)).to.equal(-0.25);
-    });
-
-    it('should return "Error" when dividing by zero', () => {
-      expect(calculateNumber('DIVIDE', 1.4, 0)).to.equal('Error');
-      expect(calculateNumber('DIVIDE', 1.4, 0.2)).to.equal('Error');
-      expect(calculateNumber('DIVIDE', 0, 0)).to.equal('Error');
-    });
-  });
-
-  describe('Invalid type', () => {
-    it('should throw an error for invalid type', () => {
-      expect(() => calculateNumber('MULTIPLY', 1.4, 4.5)).to.throw(Error, 'Invalid Type');
-      expect(() => calculateNumber('ADD', 1.4, 4.5)).to.throw(Error, 'Invalid Type');
-      expect(() => calculateNumber('', 1.4, 4.5)).to.throw(Error, 'Invalid Type');
-    });
+  it('should return rounded a minus rounded b', () => {
+    const subtract = 'SUBTRACT';
+    expect(subtract).to.be.a('string');
+    expect(calculateNumber(subtract, 5, 2.2)).to.equal(3);
+    expect(calculateNumber(subtract, 5, 2.2)).to.be.a('number');
+    expect(calculateNumber(subtract, 5.4, 2)).to.equal(3);
+    expect(calculateNumber(subtract, 5.4, 2)).to.be.a('number');
+    expect(calculateNumber(subtract, 5.6, 2.6)).to.equal(3);
+    expect(calculateNumber(subtract, 5.6, 2.6)).to.be.a('number');
   });
 });

@@ -1,21 +1,21 @@
 // 2-calcul_chai.js
 
 function calculateNumber(type, a, b) {
-  const roundedA = Math.round(a);
-  const roundedB = Math.round(b);
-
-  if (type === 'SUM') {
-    return roundedA + roundedB;
-  } else if (type === 'SUBTRACT') {
-    return roundedA - roundedB;
-  } else if (type === 'DIVIDE') {
-    if (roundedB === 0) {
-      return 'Error';
-    }
-    return roundedA / roundedB;
-  } else {
-    throw new Error('Invalid Type');
+  const roundA = Math.round(a);
+  const roundB = Math.round(b);
+  switch (type) {
+    case 'SUM':
+      return roundA + roundB;
+    case 'SUBTRACT':
+      return roundA - roundB;
+    case 'DIVIDE':
+      if (roundB === 0){
+        return 'Error';
+      }
+      return roundA / roundB;
   }
-}
 
-export default calculateNumber;
+}
+  
+  module.exports = calculateNumber;
+  
